@@ -10,3 +10,6 @@ spring:
     password: abc123
 server:
   port: 8080
+mybatis-plus:
+  configuration:
+    map-underscore-to-camel-case: false
