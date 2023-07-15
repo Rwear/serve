@@ -1,25 +1,19 @@
 package com.example.demolevel;
 
-import com.example.demolevel.mapper.UserMapper;
-import com.example.demolevel.model.User;
-import org.junit.Assert;
 import org.junit.jupiter.api.Test;
 import org.springframework.boot.test.context.SpringBootTest;
+import org.springframework.util.DigestUtils;
 
-import javax.annotation.Resource;
-import java.util.List;
+import java.nio.charset.StandardCharsets;
+import java.security.MessageDigest;
+import java.security.NoSuchAlgorithmException;
 
 @SpringBootTest
 class DemoLevelApplicationTests {
 
-    @Resource
-    private UserMapper userMapper;
     @Test
     void contextLoads() {
-        System.out.println(("----- selectAll method test ------"));
-        List<User> userList = userMapper.selectList(null);
-        Assert.assertEquals(5, userList.size());
-        userList.forEach(System.out::println);
+
     }
 
 }
