@@ -44,34 +44,34 @@ class UserServiceTest {
         String userAccount = "level";
         String userPassword = "";
         String checkPassword = "123456";
-        long result = userService.UserRegister(userAccount, userPassword, checkPassword);
+        long result = userService.userRegister(userAccount, userPassword, checkPassword);
         Assertions.assertEquals(-1, result);
 
         userAccount = "lev";
-        result = userService.UserRegister(userAccount, userPassword, checkPassword);
+        result = userService.userRegister(userAccount, userPassword, checkPassword);
         Assertions.assertEquals(-1, result);
 
         userAccount = "level";
         userPassword = "123456";
-        result = userService.UserRegister(userAccount, userPassword, checkPassword);
+        result = userService.userRegister(userAccount, userPassword, checkPassword);
         Assertions.assertEquals(-1, result);
 
         userAccount = "lev el";
         userPassword = "12345678";
-        result = userService.UserRegister(userAccount, userPassword, checkPassword);
+        result = userService.userRegister(userAccount, userPassword, checkPassword);
         Assertions.assertEquals(-1, result);
 
         checkPassword = "123456789";
-        result = userService.UserRegister(userAccount, userPassword, checkPassword);
+        result = userService.userRegister(userAccount, userPassword, checkPassword);
         Assertions.assertEquals(-1, result);
 
         userAccount = "dog";
         checkPassword = "12345678";
-        result = userService.UserRegister(userAccount, userPassword, checkPassword);
+        result = userService.userRegister(userAccount, userPassword, checkPassword);
         Assertions.assertEquals(-1, result);
 
         userAccount = "level";
-        result = userService.UserRegister(userAccount, userPassword, checkPassword);
+        result = userService.userRegister(userAccount, userPassword, checkPassword);
         Assertions.assertTrue(result > 0);
 
 
