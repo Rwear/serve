@@ -15,6 +15,8 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+import static com.example.demolevel.constant.UserConstant.USER_LOGIN_STATE;
+
 /**
 * @author 27143
 * @description 针对表【user(用户)】的数据库操作Service实现
@@ -30,10 +32,7 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
 
     private static final String SALT = "LEVEL";
 
-    /**
-     * 用户登录态
-     */
-    private static final String USER_LOGIN_STATE = "userLoginState";
+
 
     @Override
     public long userRegister(String userAccount, String userPassword, String checkPassword) {
@@ -126,11 +125,12 @@ public class UserServiceImpl extends ServiceImpl<UserMapper, User>
         safetyUser.setGender(user.getGender());
         safetyUser.setPhone(user.getPhone());
         safetyUser.setEmail(user.getEmail());
+        safetyUser.setUserRole(user.getUserRole());
         safetyUser.setUserStatus(user.getUserStatus());
         safetyUser.setCreateTime(user.getCreateTime());
 
         //4.记录用户登录态
-        request.getSession().setAttribute(USER_LOGIN_STATE, user);
+        request.getSession().setAttribute(USER_LOGIN_STATE, safetyUser);
 
 
         return safetyUser;
