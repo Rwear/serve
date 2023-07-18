@@ -12,6 +12,7 @@ import javax.annotation.Resource;
 import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
+import java.util.stream.Collectors;
 
 import static com.example.demolevel.constant.UserConstant.*;
 
@@ -76,8 +77,10 @@ public class UserController {
         if(StringUtils.isNotBlank(username)){
             queryWrapper.like("username", username);
         }
+        List<User> userList = userService.list(queryWrapper);
 
-        return userService.list(queryWrapper);
+        return userList.stream().map(user-> userService.getSaftyUser(user)).collect(Collectors.toList());
+
     }
 
     @PostMapping("/delete")
