@@ -31,5 +31,5 @@ public interface UserConstant {
     /**
      * 管理员权限
      */
-    int AMDIN_ROLE = 1;
+    int ADMIN_ROLE = 1;
 }

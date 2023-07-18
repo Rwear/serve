@@ -13,8 +13,7 @@ import javax.servlet.http.HttpServletRequest;
 import java.util.ArrayList;
 import java.util.List;
 
-import static com.example.demolevel.constant.UserConstant.AMDIN_ROLE;
-import static com.example.demolevel.constant.UserConstant.USER_LOGIN_STATE;
+import static com.example.demolevel.constant.UserConstant.*;
 
 /**
  * ClassName: UserController
@@ -74,11 +73,11 @@ public class UserController {
             return new ArrayList<>();
         }
         QueryWrapper<User> queryWrapper = new QueryWrapper<>();
-        if(StringUtils.isAnyBlank(username)){
+        if(StringUtils.isNotBlank(username)){
             queryWrapper.like("username", username);
         }
 
-        return userService.list();
+        return userService.list(queryWrapper);
     }
 
     @PostMapping("/delete")
@@ -101,6 +100,6 @@ public class UserController {
         // 仅管理员可查询
         Object userObj = request.getSession().getAttribute(USER_LOGIN_STATE);
         User user = (User) userObj;
-        return user != null && user.getUserRole() == AMDIN_ROLE;
+        return user != null && user.getUserRole() == ADMIN_ROLE;
     }
 }
