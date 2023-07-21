@@ -1,2 +1,2 @@
 # serve
-bulding a simple website
+Building a simple website
