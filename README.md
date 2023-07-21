@@ -1,2 +1,0 @@
-# serve
-Just a start!
